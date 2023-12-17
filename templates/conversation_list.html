@@ -1,0 +1,16 @@
+<!-- chat/templates/chat/conversation_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App - Conversations</title>
+</head>
+<body>
+    <h1>Conversations</h1>
+    <ul>
+        {% for conversation in conversations %}
+            <li><a href="{% url 'conversation_detail' conversation.id %}">Conversation {{ conversation.id }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- chat/templates/chat/conversation_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App - Conversation {{ conversation.id }}</title>
+</head>
+<body>
+    <h1>Conversation {{ conversation.id }}</h1>
+    <div>
+        <ul>
+            {% for message in messages %}
+                <li>
+                    <strong>{{ message.sender.username }}:</strong> {{ message.text }} - {{ message.timestamp }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <form action="{% url 'send_message' conversation.id %}" method="post">
+        {% csrf_token %}
+        <label for="text">Your Message:</label><br>
+        <textarea name="text" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
